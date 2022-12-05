@@ -13,10 +13,8 @@ jobs:
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          skip-version-file: true
-          version-file: ./build.gradle
+          version-file: ./version.json
           output-file: false
-          #skip-commit: true
 
       - name: create release
         uses: actions/create-release@v1
