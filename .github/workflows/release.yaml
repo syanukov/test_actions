@@ -22,12 +22,21 @@ jobs:
           #skip-on-empty: false
           skip-git-pull: true
 
+
       - name: Create Git release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          name: ${{ steps.changelog.outputs.tag }}
           tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
+          files: "*/**"
+#      - name: Create Git release
+#        uses: actions/create-release@v1
+#        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          tag_name: ${{ steps.changelog.outputs.tag }}
+#          release_name: ${{ steps.changelog.outputs.tag }}
+#          body: ${{ steps.changelog.outputs.clean_changelog }}
