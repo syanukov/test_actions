@@ -20,8 +20,6 @@ jobs:
           output-file: false
           skip-on-empty: false
           skip-git-pull: true
-          git-user-name: apinity-ci
-          git-user-email: apinity-ci@users.noreply.github.com
 
       - name: Create Git release
         uses: actions/create-release@v1
