@@ -30,7 +30,6 @@ jobs:
           name: ${{ steps.changelog.outputs.tag }}
           tag_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
-          files: "*/**"
 #      - name: Create Git release
 #        uses: actions/create-release@v1
 #        if: ${{ steps.changelog.outputs.skipped == 'false' }}
