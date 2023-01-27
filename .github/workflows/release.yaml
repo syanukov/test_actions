@@ -19,7 +19,7 @@ jobs:
           version-file: './version.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file: false
-          #skip-on-empty: false
+          skip-on-empty: false
           skip-git-pull: true
 
 
