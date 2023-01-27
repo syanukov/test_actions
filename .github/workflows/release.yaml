@@ -7,20 +7,26 @@ jobs:
   Release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: conventional Changelog Action
+      - name: Generate conventional changelog
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          version-file: ./version.json
+          version-file: './kubernetes/bfi/Chart.yaml'
+          version-path: 'appVersion'
           output-file: false
+          skip-on-empty: false
+          skip-git-pull: true
+          git-user-name: apinity-ci
+          git-user-email: apinity-ci@users.noreply.github.com
 
-      - name: create release
+      - name: Create Git release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
