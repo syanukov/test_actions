@@ -22,7 +22,6 @@ jobs:
           skip-on-empty: false
           skip-git-pull: true
 
-
       - name: Create Git release
         uses: softprops/action-gh-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
