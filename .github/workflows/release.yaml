@@ -16,8 +16,7 @@ jobs:
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          version-file: './kubernetes/bfi/Chart.yaml'
-          version-path: 'appVersion'
+          version-file: './version.json'
           output-file: false
           skip-on-empty: false
           skip-git-pull: true
