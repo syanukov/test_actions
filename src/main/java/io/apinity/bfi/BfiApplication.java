@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BfiApplication {
 
   public static void main(String[] args) {
-    System.out.println("**** hello from skipped ***");
+    System.out.println("**** hello ***");
     SpringApplication.run(BfiApplication.class, args);
   }
 
